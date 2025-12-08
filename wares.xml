@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diff>
+  <!-- Change volume to 0.01 for all missiles -->
+  <replace sel="//wares/ware[
+    contains(@tags, 'missile')
+  ]/@volume">0.01</replace>
+
+  <!-- Remove existing price nodes -->
+  <remove sel="//wares/ware[
+    contains(@tags, 'missile')
+  ]/price" />
+
+  <!-- Add new price (1 credit) -->
+  <add sel="//wares/ware[
+    contains(@tags, 'missile')
+  ]">
+    <price min="1" average="1" max="1" />
+  </add>
+
+  <!-- Remove existing production nodes -->
+  <remove sel="//wares/ware[
+    contains(@tags, 'missile')
+  ]/production" />
+
+  <!-- Add cheap default production -->
+  <add sel="//wares/ware[
+    contains(@tags, 'missile')
+  ]">
+    <production time="1" amount="1" method="default" name="Cheap Universal">
+      <primary>
+        <ware ware="energycells" amount="1" />
+      </primary>
+    </production>
+  </add>
+
+  <!-- Add cheap terran production -->
+  <add sel="//wares/ware[
+    contains(@tags, 'missile')
+  ]">
+    <production time="1" amount="1" method="terran" name="Cheap Terran">
+      <primary>
+        <ware ware="energycells" amount="1" />
+      </primary>
+    </production>
+  </add>
+
+  <!-- Add cheap closed loop production -->
+  <add sel="//wares/ware[
+    contains(@tags, 'missile')
+  ]">
+    <production time="1" amount="1" method="closedloop" name="Cheap Closed Loop">
+      <primary>
+        <ware ware="energycells" amount="1" />
+      </primary>
+    </production>
+  </add>
+
+</diff>
